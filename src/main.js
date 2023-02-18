@@ -2,6 +2,7 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
+
 const intents = {
   intents: [
     GatewayIntentBits.Guilds,
