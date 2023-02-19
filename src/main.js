@@ -2,6 +2,7 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
+const colors = require("colors");
 
 const intents = {
   intents: [
@@ -36,7 +37,11 @@ client.slashCommands = new Collection();
 
 //Main Code Start
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
-const hLog = (h) => console.log(`[${moment().format("YYYY-MM-DD HH:mm:ss")}] ${h}`);
+const hLog = (h, color) => {
+  console.log(color ? color(`[${moment().format("YYYY-MM-DD HH:mm:ss")}] ${h}`) : `[${moment().format("YYYY-MM-DD HH:mm:ss")}] ${h}`);
+};
+//hLog Collection
+client.hLog = hLog;
 
 //command handler
 const commands = [];
@@ -80,9 +85,9 @@ client.on("ready", async () => {
     const express = require(__dirname + "/api/main.js");
     await express.run(client);
   } catch (e) {
-    hLog(e);
+    hLog(e, colors.red);
   }
-  hLog(`${client.user.tag} is online!`);
+  hLog(`${client.user.tag} is online!`, colors.green);
 });
 
 //Login

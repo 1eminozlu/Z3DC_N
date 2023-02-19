@@ -19,7 +19,7 @@ const main = async (client) => {
   });
 
   app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    client.hLog(`Example app listening at http://localhost:${port}`);
   });
 };
 
